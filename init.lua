@@ -533,6 +533,17 @@ require('lazy').setup({
     },
   },
   {
+    'kdheepak/lazygit.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',            -- Required dependency
+    },
+    lazy = true,                          -- Load only when needed
+    cmd = { 'LazyGit', 'LazyGitConfig' }, -- Commands that trigger loading
+    keys = {
+      { '<leader>lg', '<cmd>LazyGit<CR>', desc = '[L]azy[G]it' },
+    },
+  },
+  {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
