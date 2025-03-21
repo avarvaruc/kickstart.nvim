@@ -117,6 +117,12 @@ vim.opt.showmode = false
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
+-- (black hole register) is the simplest and most common if you just want deletes to stop clobbering the clipboard while keeping yanks synced
+vim.keymap.set('n', 'd', '"_d', { noremap = true })
+vim.keymap.set('x', 'd', '"_d', { noremap = true })
+vim.keymap.set('n', 'dd', '"_dd', { noremap = true })
+vim.keymap.set('n', 'D', '"_D', { noremap = true })
+vim.keymap.set('n', 'x', '"_x', { noremap = true })
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -203,8 +209,11 @@ vim.keymap.set('n', '<leader>cp', function()
   print('Copied path: ' .. path)    -- Feedback
 end, { desc = '[C]opy [P]ath' })
 
+-- open explorer
 vim.keymap.set("n", "<leader>e", ":Oil<CR>", { desc = "Open Oil file explorer" })
 
+-- toggle git blame
+vim.keymap.set('n', '<leader>gb', ':GitBlameToggle<CR>', { desc = 'Toggle Git Blame', noremap = true, silent = true })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -575,6 +584,15 @@ require('lazy').setup({
       },
     },
     dependencies = { 'nvim-tree/nvim-web-devicons' }, -- Optional for icons
+  },
+  {
+    'f-person/git-blame.nvim',
+    event = 'VeryLazy',
+    config = function()
+      require('gitblame').setup {
+        enabled = false, -- Start disabled
+      }
+    end,
   },
   {
     'akinsho/toggleterm.nvim',
