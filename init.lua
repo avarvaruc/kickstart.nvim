@@ -203,6 +203,8 @@ vim.keymap.set('n', '<leader>cp', function()
   print('Copied path: ' .. path)    -- Feedback
 end, { desc = '[C]opy [P]ath' })
 
+vim.keymap.set("n", "<leader>e", ":Oil<CR>", { desc = "Open Oil file explorer" })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -556,6 +558,23 @@ require('lazy').setup({
     config = function()
       require("bufferline").setup {}
     end,
+  },
+  {
+    'stevearc/oil.nvim',
+    opts = {
+      columns = { "icon" },           -- Show icons in the file explorer
+      keymaps = {
+        ["g?"] = "actions.show_help", -- Default help keymap
+        ["<CR>"] = "actions.select",  -- Enter to open file/dir
+        ["-"] = "actions.parent",     -- Go up a directory
+        ["q"] = "actions.close",      -- Close oil window
+      },
+      use_default_keymaps = true,     -- Use oil's default keymaps alongside custom ones
+      view_options = {
+        show_hidden = true,           -- Show hidden files (e.g., .gitignore, .git)
+      },
+    },
+    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- Optional for icons
   },
   {
     -- Main LSP Configuration
@@ -1003,7 +1022,7 @@ require('lazy').setup({
   },
 
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' },  opts = { signs = false } },
+  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
