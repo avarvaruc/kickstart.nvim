@@ -582,7 +582,7 @@ require('lazy').setup({
     config = function()
       require("toggleterm").setup {
         size = 80,
-        open_mapping = [[<leader>t]],
+        open_mapping = [[<c-\>]],
         hide_numbers = true,
         shade_terminals = true,
         shading_factor = 2,
