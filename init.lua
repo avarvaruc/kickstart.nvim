@@ -550,6 +550,14 @@ require('lazy').setup({
     },
   },
   {
+    'akinsho/bufferline.nvim',
+    version = "*",                                    -- Use the latest stable version
+    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- Optional, for file icons
+    config = function()
+      require("bufferline").setup {}
+    end,
+  },
+  {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -995,7 +1003,7 @@ require('lazy').setup({
   },
 
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' },  opts = { signs = false } },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
