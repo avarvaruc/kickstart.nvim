@@ -197,6 +197,12 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- In insert mode escape with jj
 vim.keymap.set('i', 'jj', '<Esc>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('n', '<leader>cp', function()
+  local path = vim.fn.expand('%:p') -- Full absolute path
+  vim.fn.setreg('+', path)          -- Copy to system clipboard
+  print('Copied path: ' .. path)    -- Feedback
+end, { desc = '[C]opy [P]ath' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
