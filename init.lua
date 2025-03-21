@@ -577,6 +577,31 @@ require('lazy').setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' }, -- Optional for icons
   },
   {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    config = function()
+      require("toggleterm").setup {
+        size = 80,
+        open_mapping = [[<leader>t]],
+        hide_numbers = true,
+        shade_terminals = true,
+        shading_factor = 2,
+        start_in_insert = true,
+        insert_mappings = true,
+        persist_size = true,
+        direction = 'float',
+        close_on_exit = false,
+        shell = vim.o.shell,
+        float_opts = {
+          border = 'curved',
+          winblend = 0,
+          width = 80,
+          height = 20,
+        },
+      }
+    end,
+  },
+  {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
