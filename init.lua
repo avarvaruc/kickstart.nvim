@@ -664,6 +664,10 @@ require('lazy').setup({
     },
   },
   {
+    "karb94/neoscroll.nvim",
+    opts = {},
+  },
+  {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
