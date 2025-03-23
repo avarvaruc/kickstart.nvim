@@ -655,7 +655,13 @@ require('lazy').setup({
     opts = {
       suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
       -- log_level = 'debug',
-    }
+    },
+    keys = {
+      -- Will use Telescope if installed or a vim.ui.select picker otherwise
+      { '<leader>wr', '<cmd>SessionSearch<CR>',         desc = 'Session search' },
+      { '<leader>wd', '<cmd>SessionSave<CR>',           desc = 'Save session' },
+      { '<leader>wa', '<cmd>SessionToggleAutoSave<CR>', desc = 'Toggle autosave' },
+    },
   },
   {
     -- Main LSP Configuration
