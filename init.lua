@@ -583,7 +583,8 @@ require('lazy').setup({
         show_hidden = true,           -- Show hidden files (e.g., .gitignore, .git)
       },
     },
-    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- Optional for icons
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { 'nvim-tree/nvim-web-devicons' }, -- Optional for icons
   },
   {
     'f-person/git-blame.nvim',
