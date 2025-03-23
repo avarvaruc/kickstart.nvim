@@ -827,8 +827,21 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
         --
+        --install with
+        -- npm install -g typescript-language-server typescript
+        -- (but also works with mason)
+        ts_ls = {
+          filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayFunctionLikeReturnTypeHints = true,
+              },
+            },
+          },
+        }, --
 
         lua_ls = {
           -- cmd = { ... },
