@@ -211,6 +211,7 @@ end, { desc = '[C]opy [P]ath' })
 
 -- open explorer
 vim.keymap.set("n", "-", ":Oil<CR>", { desc = "Open Oil file explorer" })
+vim.keymap.set("n", "<leader>x", ":bd<CR>", { desc = "Close buffer" })
 
 -- toggle git blame
 vim.keymap.set('n', '<leader>gb', ':GitBlameToggle<CR>', { desc = 'Toggle Git Blame', noremap = true, silent = true })
