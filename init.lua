@@ -210,7 +210,7 @@ vim.keymap.set('n', '<leader>cp', function()
 end, { desc = '[C]opy [P]ath' })
 
 -- open explorer
-vim.keymap.set("n", "<leader>e", ":Oil<CR>", { desc = "Open Oil file explorer" })
+vim.keymap.set("n", "-", ":Oil<CR>", { desc = "Open Oil file explorer" })
 
 -- toggle git blame
 vim.keymap.set('n', '<leader>gb', ':GitBlameToggle<CR>', { desc = 'Toggle Git Blame', noremap = true, silent = true })
