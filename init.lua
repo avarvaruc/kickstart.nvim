@@ -214,7 +214,10 @@ vim.keymap.set("n", "-", ":Oil<CR>", { desc = "Open Oil file explorer" })
 vim.keymap.set("n", "<leader>x", ":bd<CR>", { desc = "Close buffer" })
 
 -- toggle git blame
-vim.keymap.set('n', '<leader>gb', ':GitBlameToggle<CR>', { desc = 'Toggle Git Blame', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>gb', ':GitBlameToggle<CR>', { desc = 'Toggle [G]it [B]lame', noremap = true, silent = true })
+
+-- show git status in telescope
+vim.keymap.set("n", "<leader>gs", ":Telescope git_status<CR>", { desc = "[G]it [S]tatus" })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
