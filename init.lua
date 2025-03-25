@@ -685,8 +685,18 @@ require('lazy').setup({
     },
   },
   {
-    "karb94/neoscroll.nvim",
-    opts = {},
+    'karb94/neoscroll.nvim',
+    config = function()
+      require('neoscroll').setup({
+        mappings = { '<C-u>', '<C-d>', },
+        hide_cursor = true,
+        stop_eof = true,
+        respect_scrolloff = true,
+      })
+      local neoscroll = require('neoscroll')
+      vim.keymap.set('n', '<C-u>', function() neoscroll.scroll(-10, true, 150) end, { desc = 'Scroll up 10 lines' })
+      vim.keymap.set('n', '<C-d>', function() neoscroll.scroll(10, true, 150) end, { desc = 'Scroll down 10 lines' })
+    end,
   },
   {
     -- Main LSP Configuration
