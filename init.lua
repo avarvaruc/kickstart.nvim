@@ -218,6 +218,23 @@ vim.keymap.set('n', '<leader>gb', ':GitBlameToggle<CR>', { desc = 'Toggle [G]it 
 
 -- show git status in telescope
 vim.keymap.set("n", "<leader>gs", ":Telescope git_status<CR>", { desc = "[G]it [S]tatus" })
+
+-- live grepping in git staged/unstaged files
+local function grep_git_changes()
+  local files = vim.fn.systemlist("git status --porcelain | awk '{print $2}'")
+  if #files == 0 then
+    print("No staged or unstaged files to grep")
+    return
+  end
+  require("telescope.builtin").live_grep({
+    prompt_title = "Grep in Staged/Unstaged Files",
+    glob_pattern = files,
+  })
+end
+
+vim.keymap.set('n', '<leader>gg', grep_git_changes, { desc = '[G]rep in [g]it staged/unstaged files' })
+
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
