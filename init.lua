@@ -701,10 +701,27 @@ require('lazy').setup({
         respect_scrolloff = true,
       })
       local neoscroll = require('neoscroll')
-      vim.keymap.set('n', '<C-u>', function() neoscroll.scroll(-10, true, 150) end, { desc = 'Scroll up 10 lines' })
-      vim.keymap.set('n', '<C-d>', function() neoscroll.scroll(10, true, 150) end, { desc = 'Scroll down 10 lines' })
+      vim.keymap.set('n', '<C-u>', function()
+        neoscroll.scroll(-10, { move_cursor = true, duration = 100 })
+      end, { desc = 'Scroll up 10 lines' })
+      vim.keymap.set('n', '<C-d>', function()
+        neoscroll.scroll(10, { move_cursor = true, duration = 100 })
+      end, { desc = 'Scroll down 10 lines' })
     end,
   },
+  {
+    "tpope/vim-fugitive",
+    cmd = "Git"
+  },
+  -- {
+  --   "willothy/flatten.nvim",
+  --   config = true,
+  --   -- or pass configuration with
+  --   -- opts = {  }
+  --   -- Ensure that it runs first to minimize delay when opening file from terminal
+  --   lazy = false,
+  --   priority = 1001,
+  -- },
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
