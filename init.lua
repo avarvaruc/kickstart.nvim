@@ -219,7 +219,8 @@ vim.keymap.set('n', '<leader>gb', ':GitBlameToggle<CR>', { desc = 'Toggle [G]it 
 vim.keymap.set("n", "<leader>gs", ":Telescope git_status<CR>", { desc = "[G]it [S]tatus" })
 
 -- tab for cyclying through windows
-vim.keymap.set("n", "<tab>", "<C-w><C-w>")
+-- disables <C-i> for some reason
+-- vim.keymap.set("n", "<Tab>", "<Cmd>wincmd w<CR>", { silent = true, noremap = true })
 
 -- navigate the quickfix list
 vim.keymap.set("n", "<leader>cn", ":cnext<CR>", { desc = "Next quickfix item" })
