@@ -222,6 +222,10 @@ vim.keymap.set("n", "<leader>gs", ":Telescope git_status<CR>", { desc = "[G]it [
 -- tab for cyclying through windows
 vim.keymap.set("n", "<tab>", "<C-w><C-w>")
 
+-- navigate the quickfix list
+vim.keymap.set("n", "<leader>cn", ":cnext<CR>", { desc = "Next quickfix item" })
+vim.keymap.set("n", "<leader>cp", ":cprev<CR>", { desc = "Previous quickfix item" })
+
 -- live grepping in git staged/unstaged files
 local function grep_git_changes()
   local files = vim.fn.systemlist("git status --porcelain | awk '{print $2}'")
