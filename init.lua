@@ -240,7 +240,8 @@ end
 
 vim.keymap.set('n', '<leader>gg', grep_git_changes, { desc = '[G]rep in [g]it staged/unstaged files' })
 
-
+vim.keymap.set('n', ']c', ':Gitsigns next_hunk<CR>', { desc = 'Go to next hunk' })
+vim.keymap.set('n', '[c', ':Gitsigns prev_hunk<CR>', { desc = 'Go to prev hunk' })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
