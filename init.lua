@@ -219,6 +219,8 @@ vim.keymap.set('n', '<leader>gb', ':GitBlameToggle<CR>', { desc = 'Toggle [G]it 
 -- show git status in telescope
 vim.keymap.set("n", "<leader>gs", ":Telescope git_status<CR>", { desc = "[G]it [S]tatus" })
 
+-- tab for cyclying through windows
+vim.keymap.set("n", "<tab>", "<C-w><C-w>")
 -- live grepping in git staged/unstaged files
 local function grep_git_changes()
   local files = vim.fn.systemlist("git status --porcelain | awk '{print $2}'")
