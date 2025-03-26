@@ -82,7 +82,6 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -587,6 +586,12 @@ require('lazy').setup({
     keys = {
       { '<leader>lg', '<cmd>LazyGit<CR>', desc = '[L]azy[G]it' },
     },
+    config = function()
+      -- first brew install neovim-remote (or pip or whatever)
+      -- Optional: Customize LazyGit settings
+      vim.g.lazygit_floating_window_use_plenary = 1 -- Use plenary for better floating window handling
+      vim.g.lazygit_use_neovim_remote = 1           -- Enable neovim-remote integration
+    end,
   },
   {
     'akinsho/bufferline.nvim',
