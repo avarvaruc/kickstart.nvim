@@ -210,7 +210,7 @@ vim.keymap.set('n', '<leader>cp', function()
 end, { desc = '[C]opy [P]ath' })
 
 -- open explorer
-vim.keymap.set("n", "-", ":Oil<CR>", { desc = "Open Oil file explorer" })
+vim.keymap.set("n", "<leader>-", ":Oil<CR>", { desc = "Open Oil file explorer" })
 vim.keymap.set("n", "<leader>x", ":bd<CR>", { desc = "Close buffer" })
 
 -- toggle git blame
@@ -221,6 +221,7 @@ vim.keymap.set("n", "<leader>gs", ":Telescope git_status<CR>", { desc = "[G]it [
 
 -- tab for cyclying through windows
 vim.keymap.set("n", "<tab>", "<C-w><C-w>")
+
 -- live grepping in git staged/unstaged files
 local function grep_git_changes()
   local files = vim.fn.systemlist("git status --porcelain | awk '{print $2}'")
