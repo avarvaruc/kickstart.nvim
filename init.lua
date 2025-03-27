@@ -117,11 +117,11 @@ vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
 -- (black hole register) is the simplest and most common if you just want deletes to stop clobbering the clipboard while keeping yanks synced
-vim.keymap.set('n', 'd', '"_d', { noremap = true })
-vim.keymap.set('x', 'd', '"_d', { noremap = true })
-vim.keymap.set('n', 'dd', '"_dd', { noremap = true })
-vim.keymap.set('n', 'D', '"_D', { noremap = true })
-vim.keymap.set('n', 'x', '"_x', { noremap = true })
+-- vim.keymap.set('n', 'd', '"_d', { noremap = true })
+-- vim.keymap.set('x', 'd', '"_d', { noremap = true })
+-- vim.keymap.set('n', 'dd', '"_dd', { noremap = true })
+-- vim.keymap.set('n', 'D', '"_D', { noremap = true })
+-- vim.keymap.set('n', 'x', '"_x', { noremap = true })
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -1187,7 +1187,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'tokyonight-moon'
     end,
   },
 
