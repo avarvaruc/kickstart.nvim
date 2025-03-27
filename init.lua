@@ -243,6 +243,10 @@ vim.keymap.set('n', '<leader>gg', grep_git_changes, { desc = '[G]rep in [g]it st
 
 vim.keymap.set('n', ']c', ':Gitsigns next_hunk<CR>', { desc = 'Go to next hunk' })
 vim.keymap.set('n', '[c', ':Gitsigns prev_hunk<CR>', { desc = 'Go to prev hunk' })
+
+-- create a temporary scratch buffer
+vim.api.nvim_set_keymap('n', '<leader>tt', ':enew<CR>:setlocal buftype=nofile bufhidden=hide noswapfile<CR>',
+  { noremap = true, silent = true, desc = 'Open a scratch buffer' })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
