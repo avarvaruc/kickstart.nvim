@@ -743,6 +743,39 @@ require('lazy').setup({
   --   priority = 1001,
   -- },
   {
+    "sindrets/diffview.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    -- Remove cmd to load eagerly, or use keys to lazy-load with keymaps
+    keys = {
+      { "<leader>do", ":DiffviewOpen<CR>", desc = "Open Diffview" },
+      {
+        "<leader>dc",
+        function()
+          if vim.bo.filetype == "DiffviewFiles" or vim.bo.filetype == "DiffviewFileHistory" then
+            vim.cmd("DiffviewClose")
+          else
+            print("No Diffview open to close")
+          end
+        end,
+        desc = "Close Diffview"
+      },
+    },
+    config = function()
+      require("diffview").setup({
+        enhanced_diff_hl = true,
+        use_icons = false,
+        view = {
+          default = {
+            layout = "diff2_horizontal",
+          },
+        },
+      })
+      -- Keymaps are now handled by the 'keys' field, so no need to set them here
+    end,
+  },
+  {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
