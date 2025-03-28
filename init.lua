@@ -219,6 +219,11 @@ vim.keymap.set('n', '<leader>gb', ':GitBlameToggle<CR>', { desc = 'Toggle [G]it 
 -- show git status in telescope
 vim.keymap.set("n", "<leader>gs", ":Telescope git_status<CR>", { desc = "[G]it [S]tatus" })
 
+-- bufferline cyclying navigation
+vim.api.nvim_set_keymap('n', '<leader>]', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>[', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+
+
 -- tab for cyclying through windows
 -- disables <C-i> for some reason
 -- vim.keymap.set("n", "<Tab>", "<Cmd>wincmd w<CR>", { silent = true, noremap = true })
