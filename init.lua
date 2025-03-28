@@ -210,7 +210,8 @@ end, { desc = '[C]opy [P]ath' })
 
 -- open explorer
 vim.keymap.set("n", "<leader>-", ":Oil<CR>", { desc = "Open Oil file explorer" })
-vim.keymap.set("n", "<leader>x", ":bd<CR>", { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>xx", ":bd<CR>", { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>xa", ":bufdo bd<CR>", { desc = "Close all buffers" })
 
 -- toggle git blame
 vim.keymap.set('n', '<leader>gb', ':GitBlameToggle<CR>', { desc = 'Toggle [G]it [B]lame', noremap = true, silent = true })
@@ -247,6 +248,9 @@ vim.keymap.set('n', '[c', ':Gitsigns prev_hunk<CR>', { desc = 'Go to prev hunk' 
 -- create a temporary scratch buffer
 vim.api.nvim_set_keymap('n', '<leader>tt', ':enew<CR>:setlocal buftype=nofile bufhidden=hide noswapfile<CR>',
   { noremap = true, silent = true, desc = 'Open a scratch buffer' })
+
+
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
