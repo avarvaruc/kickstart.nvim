@@ -241,6 +241,12 @@ vim.keymap.set('n', "<C-u>", "<C-d>zz")
 -- yank something and then paste it with leader p and still keep it in the registry
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
+-- Remap n to nzz (next match + center)
+vim.keymap.set("n", "n", "nzz", { noremap = true, silent = true })
+
+-- Remap N to Nzz (previous match + center)
+vim.keymap.set("n", "N", "Nzz", { noremap = true, silent = true })
+
 -- live grepping in git staged/unstaged files
 local function grep_git_changes()
   local files = vim.fn.systemlist("git status --porcelain | awk '{print $2}'")
