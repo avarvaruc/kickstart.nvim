@@ -232,6 +232,15 @@ vim.api.nvim_set_keymap('n', '<leader>[', ':BufferLineCyclePrev<CR>', { noremap 
 vim.keymap.set("n", "<leader>cn", ":cnext<CR>", { desc = "Next quickfix item" })
 vim.keymap.set("n", "<leader>cp", ":cprev<CR>", { desc = "Previous quickfix item" })
 
+
+-- Ctrl D and CTRL U center line
+vim.keymap.set('n', "<C-d>", "<C-d>zz")
+vim.keymap.set('n', "<C-u>", "<C-d>zz")
+
+-- greatest remap ever
+-- yank something and then paste it with leader p and still keep it in the registry
+vim.keymap.set("x", "<leader>p", "\"_dP")
+
 -- live grepping in git staged/unstaged files
 local function grep_git_changes()
   local files = vim.fn.systemlist("git status --porcelain | awk '{print $2}'")
@@ -711,24 +720,24 @@ require('lazy').setup({
       { '<leader>wa', '<cmd>SessionToggleAutoSave<CR>', desc = 'Toggle autosave' },
     },
   },
-  {
-    'karb94/neoscroll.nvim',
-    config = function()
-      require('neoscroll').setup({
-        mappings = { '<C-u>', '<C-d>', },
-        hide_cursor = true,
-        stop_eof = true,
-        respect_scrolloff = true,
-      })
-      local neoscroll = require('neoscroll')
-      vim.keymap.set('n', '<C-u>', function()
-        neoscroll.scroll(-10, { move_cursor = true, duration = 100 })
-      end, { desc = 'Scroll up 10 lines' })
-      vim.keymap.set('n', '<C-d>', function()
-        neoscroll.scroll(10, { move_cursor = true, duration = 100 })
-      end, { desc = 'Scroll down 10 lines' })
-    end,
-  },
+  -- {
+  --   'karb94/neoscroll.nvim',
+  --   config = function()
+  --     require('neoscroll').setup({
+  --       mappings = { '<C-u>', '<C-d>', },
+  --       hide_cursor = true,
+  --       stop_eof = true,
+  --       respect_scrolloff = true,
+  --     })
+  --     local neoscroll = require('neoscroll')
+  --     vim.keymap.set('n', '<C-u>', function()
+  --       neoscroll.scroll(-10, { move_cursor = true, duration = 100 })
+  --     end, { desc = 'Scroll up 10 lines' })
+  --     vim.keymap.set('n', '<C-d>', function()
+  --       neoscroll.scroll(10, { move_cursor = true, duration = 100 })
+  --     end, { desc = 'Scroll down 10 lines' })
+  --   end,
+  -- },
   {
     "tpope/vim-fugitive",
     cmd = "Git"
