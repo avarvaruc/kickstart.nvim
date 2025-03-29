@@ -1232,7 +1232,10 @@ require('lazy').setup({
       vim.cmd.colorscheme 'tokyonight-moon'
     end,
   },
-
+  {
+    'ThePrimeagen/vim-be-good',
+    cmd = 'VimBeGood', -- Load the plugin when :VimBeGood is run
+  },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
