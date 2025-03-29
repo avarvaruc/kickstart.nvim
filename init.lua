@@ -234,8 +234,11 @@ vim.keymap.set("n", "<leader>cp", ":cprev<CR>", { desc = "Previous quickfix item
 
 
 -- Ctrl D and CTRL U center line
-vim.keymap.set('n', "<C-d>", "<C-d>zz")
-vim.keymap.set('n', "<C-u>", "<C-d>zz")
+-- Scroll down half a page and center
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
+
+-- Scroll up half a page and center (fixed from <C-d> to <C-u>)
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 
 -- greatest remap ever
 -- yank something and then paste it with leader p and still keep it in the registry
