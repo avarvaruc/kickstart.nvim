@@ -752,8 +752,19 @@ require('lazy').setup({
   --   end,
   -- },
   {
-    "tpope/vim-fugitive",
-    cmd = "Git"
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",  -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed.
+      "nvim-telescope/telescope.nvim", -- optional
+      "ibhagwan/fzf-lua",              -- optional
+      "echasnovski/mini.pick",         -- optional
+    },
+    -- set up leader ng for neogit
+    keys = { { "<leader>ng", ":Neogit<CR>", desc = "Neogit" } },
+    config = true
   },
   -- {
   --   "willothy/flatten.nvim",
