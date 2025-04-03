@@ -493,6 +493,13 @@ require('lazy').setup({
             require('telescope.themes').get_dropdown(),
           },
         },
+        pickers = {
+          buffers = {
+            sort_mru = true,              -- Sort buffers by most recently used
+            ignore_current_buffer = true, -- Optional: Skip the current buffer in the list
+            show_all_buffers = true,      -- Optional: Show all buffers, even unlisted ones
+          },
+        },
       }
 
       -- Enable Telescope extensions if they are installed
