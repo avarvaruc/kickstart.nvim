@@ -495,9 +495,9 @@ require('lazy').setup({
         },
         pickers = {
           buffers = {
-            sort_mru = true,              -- Sort buffers by most recently used
-            ignore_current_buffer = true, -- Optional: Skip the current buffer in the list
-            show_all_buffers = true,      -- Optional: Show all buffers, even unlisted ones
+            sort_mru = true,         -- Sort buffers by most recently used
+            -- ignore_current_buffer = true, -- Optional: Skip the current buffer in the list
+            show_all_buffers = true, -- Optional: Show all buffers, even unlisted ones
           },
         },
       }
