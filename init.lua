@@ -277,6 +277,9 @@ vim.api.nvim_set_keymap('n', '<leader>tt', ':enew<CR>:setlocal buftype=nofile bu
   { noremap = true, silent = true, desc = 'Open a scratch buffer' })
 
 
+vim.keymap.set('n', '<leader>ww', function()
+  vim.o.wrap = not vim.o.wrap
+end, { noremap = true, silent = true, desc = "Toggle word wrap" })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
