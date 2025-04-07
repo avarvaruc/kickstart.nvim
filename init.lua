@@ -272,6 +272,14 @@ vim.keymap.set('n', '[c', ':Gitsigns prev_hunk<CR>', { desc = 'Go to prev hunk' 
 vim.keymap.set('n', '<leader>0', ':cnext<CR>', { desc = 'Go to next quickfix item' })
 vim.keymap.set('n', '<leader>9', ':cprev<CR>', { desc = 'Go to prev quickfix item' })
 
+-- Tabs navigation with Up/Down arrows
+vim.keymap.set('n', '<Up>', ':tabnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Down>', ':tabprevious<CR>', { noremap = true, silent = true })
+
+-- Buffers navigation with Left/Right arrows
+vim.keymap.set('n', '<Right>', ':bnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Left>', ':bprevious<CR>', { noremap = true, silent = true })
+
 -- create a temporary scratch buffer
 vim.api.nvim_set_keymap('n', '<leader>tt', ':enew<CR>:setlocal buftype=nofile bufhidden=hide noswapfile<CR>',
   { noremap = true, silent = true, desc = 'Open a scratch buffer' })
