@@ -289,6 +289,8 @@ vim.keymap.set('n', '<leader>ww', function()
   vim.o.wrap = not vim.o.wrap
 end, { noremap = true, silent = true, desc = "Toggle word wrap" })
 
+vim.keymap.set('n', '<leader>m', function() require('monolithic').open() end, { desc = 'Open monolithic.nvim' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -505,6 +507,22 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
+        defaults = {
+          -- Custom path display that prioritizes showing the filename
+          path_display = function(opts, path)
+            local tail = require("telescope.utils").path_tail(path)
+            local dir = vim.fn.fnamemodify(path, ":h")
+            if #dir > 30 then
+              dir = "..." .. string.sub(dir, -27)
+            end
+            return string.format("%s (%s)", tail, dir)
+          end,
+          -- Alternative simpler options (uncomment one if you prefer):
+          -- path_display = { "smart" }, -- Smart truncation
+          -- path_display = { "filename_first" }, -- Shows filename first, then path
+          -- path_display = { "truncate" },    -- Truncate from the beginning
+          -- path_display = { "tail" },        -- Show only filename
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -531,6 +549,22 @@ require('lazy').setup({
             sort_mru = true,         -- Sort buffers by most recently used
             -- ignore_current_buffer = true, -- Optional: Skip the current buffer in the list
             show_all_buffers = true, -- Optional: Show all buffers, even unlisted ones
+            path_display = function(opts, path)
+              local tail = require("telescope.utils").path_tail(path)
+              local dir = vim.fn.fnamemodify(path, ":h")
+              if #dir > 25 then
+                dir = "..." .. string.sub(dir, -22)
+              end
+              return string.format("%s (%s)", tail, dir)
+            end,
+          },
+          find_files = {
+            -- Inherits from defaults, but you can override here if needed
+            -- path_display = { "tail" }, -- Uncomment to show only filenames
+          },
+          live_grep = {
+            -- Inherits from defaults, but you can override here if needed
+            -- path_display = { "smart" }, -- Uncomment for smart truncation
           },
         },
       }
@@ -700,6 +734,7 @@ require('lazy').setup({
       use_default_keymaps = true,     -- Use oil's default keymaps alongside custom ones
       view_options = {
         show_hidden = true,           -- Show hidden files (e.g., .gitignore, .git)
+        preview = true
       },
     },
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
@@ -855,6 +890,20 @@ require('lazy').setup({
         },
       })
       -- Keymaps are now handled by the 'keys' field, so no need to set them here
+    end,
+  },
+  {
+    'jbyuki/monolithic.nvim',
+    config = function()
+      require('monolithic').setup {
+        valid_ext = { 'lua', 'py', 'cpp', 'h' }, -- File extensions to include
+        exclude_dirs = { '.git' },               -- Directories to exclude
+        perc_width = 0.8,                        -- Width of the floating window
+        perc_height = 0.8,                       -- Height of the floating window
+        max_file = 100,                          -- Max number of files to process
+        max_search = 1000,                       -- Max lines to search
+        highlight = true,                        -- Enable syntax highlighting
+      }
     end,
   },
   {
